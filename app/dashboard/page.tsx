@@ -21,12 +21,11 @@ import { NotificationPanel } from '@/components/features/notification-panel';
 import { ExportShare } from '@/components/features/export-share';
 import { ResetRecalculate } from '@/components/features/reset-recalculate';
 import { QuickOverview } from '@/components/features/quick-overview';
-import { ProfileDropdown } from '@/components/ui/profile-dropdown';
+import { Navbar } from '@/components/layout/navbar';
 import { containerVariants, itemVariants, slideUp } from '@/lib/animations';
 import { getStoredUser, logout } from '@/lib/mock-data/auth';
 import { MOCK_SCORE_HISTORY, MOCK_SUGGESTIONS, MOCK_SCORE_DATA, MOCK_USER_PROFILE, MOCK_ACTIVITY, MOCK_NOTIFICATIONS } from '@/lib/mock-data/dashboard';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { LayoutDashboard, BarChart3, Zap, Settings } from 'lucide-react';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -69,53 +68,8 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <motion.header
-        className="sticky top-0 z-50 backdrop-blur-md border-b border-white/10"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-4 border-b border-white/5">
-            <div className="flex items-center gap-4">
-              <div className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-                FinCredit
-              </div>
-            </div>
-            <ProfileDropdown user={user} onLogout={handleLogout} />
-          </div>
-
-          {/* Navigation */}
-          <div className="flex gap-2 overflow-x-auto py-4">
-            {[
-              { label: 'Dashboard', icon: LayoutDashboard, href: '/dashboard' },
-              { label: 'Insights', icon: BarChart3, href: '/insights' },
-              { label: 'Simulator', icon: Zap, href: '/simulator' },
-              { label: 'Settings', icon: Settings, href: '/settings' },
-            ].map((item) => {
-              const Icon = item.icon;
-              const isActive = router.pathname === item.href || (item.href === '/dashboard' && router.pathname === '/');
-              return (
-                <motion.button
-                  key={item.label}
-                  onClick={() => router.push(item.href)}
-                  className={`px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap transition-all ${
-                    isActive
-                      ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white'
-                      : 'text-text-secondary hover:text-white hover:bg-white/10'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="text-sm font-medium">{item.label}</span>
-                </motion.button>
-              );
-            })}
-          </div>
-        </div>
-      </motion.header>
+      {/* Navbar */}
+      <Navbar user={user} notifications={MOCK_NOTIFICATIONS} onLogout={handleLogout} />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">

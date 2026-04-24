@@ -1,4 +1,4 @@
-# FinCredit - Complete Feature List
+# CredNova - Complete Feature List
 
 ## Phase 1: Core Design System ✅
 - **Theme CSS**: Custom color palette with fintech dark theme

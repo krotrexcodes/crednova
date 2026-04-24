@@ -60,7 +60,7 @@ export default function SettingsPage() {
                 <ChevronLeft className="w-6 h-6 text-white" />
               </button>
               <div className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-                FinCredit
+                CredNova
               </div>
             </div>
             <AnimatedButton

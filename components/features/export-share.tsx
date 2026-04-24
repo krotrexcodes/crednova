@@ -16,7 +16,7 @@ export function ExportShare({ score, animate = true, delay = 0 }: ExportSharePro
     console.log('[v0] Downloading report...');
     // Simulate download
     const content = `
-Financial Report - FinCredit
+Financial Report - CredNova
 ============================
 Credit Score: ${score}
 Generated: ${new Date().toLocaleDateString()}

@@ -120,7 +120,7 @@ export default function VerifyPage() {
         transition={{ delay: 0.1 }}
       >
         <div className="text-4xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">
-          FinCredit
+          CredNova
         </div>
         <p className="text-text-secondary text-sm">
           Verify your identity
