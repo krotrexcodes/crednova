@@ -21,11 +21,12 @@ import { NotificationPanel } from '@/components/features/notification-panel';
 import { ExportShare } from '@/components/features/export-share';
 import { ResetRecalculate } from '@/components/features/reset-recalculate';
 import { QuickOverview } from '@/components/features/quick-overview';
+import { ProfileDropdown } from '@/components/ui/profile-dropdown';
 import { containerVariants, itemVariants, slideUp } from '@/lib/animations';
 import { getStoredUser, logout } from '@/lib/mock-data/auth';
 import { MOCK_SCORE_HISTORY, MOCK_SUGGESTIONS, MOCK_SCORE_DATA, MOCK_USER_PROFILE, MOCK_ACTIVITY, MOCK_NOTIFICATIONS } from '@/lib/mock-data/dashboard';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { LogOut, LayoutDashboard, BarChart3, Zap, Settings } from 'lucide-react';
+import { LayoutDashboard, BarChart3, Zap, Settings } from 'lucide-react';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -82,20 +83,7 @@ export default function DashboardPage() {
                 FinCredit
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="hidden sm:flex flex-col items-end">
-                <p className="text-white font-medium">{user.name}</p>
-                <p className="text-text-secondary text-sm">{user.mobileNumber}</p>
-              </div>
-              <AnimatedButton
-                variant="ghost"
-                size="sm"
-                icon={<LogOut className="w-4 h-4" />}
-                onClick={handleLogout}
-              >
-                Logout
-              </AnimatedButton>
-            </div>
+            <ProfileDropdown user={user} onLogout={handleLogout} />
           </div>
 
           {/* Navigation */}
