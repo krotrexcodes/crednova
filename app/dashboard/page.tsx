@@ -17,14 +17,13 @@ import { Gamification } from '@/components/features/gamification';
 import { UserProfileCard } from '@/components/features/user-profile-card';
 import { FinancialForm } from '@/components/features/financial-form';
 import { ActivityTimeline } from '@/components/features/activity-timeline';
-import { NotificationPanel } from '@/components/features/notification-panel';
 import { ExportShare } from '@/components/features/export-share';
 import { ResetRecalculate } from '@/components/features/reset-recalculate';
 import { QuickOverview } from '@/components/features/quick-overview';
 import { Navbar } from '@/components/layout/navbar';
 import { containerVariants, itemVariants, slideUp } from '@/lib/animations';
 import { getStoredUser, logout } from '@/lib/mock-data/auth';
-import { MOCK_SCORE_HISTORY, MOCK_SUGGESTIONS, MOCK_SCORE_DATA, MOCK_USER_PROFILE, MOCK_ACTIVITY, MOCK_NOTIFICATIONS } from '@/lib/mock-data/dashboard';
+import { MOCK_SCORE_HISTORY, MOCK_SUGGESTIONS, MOCK_SCORE_DATA, MOCK_USER_PROFILE, MOCK_ACTIVITY } from '@/lib/mock-data/dashboard';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 export default function DashboardPage() {
@@ -69,7 +68,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
-      <Navbar user={user} notifications={MOCK_NOTIFICATIONS} onLogout={handleLogout} />
+      <Navbar user={user} onLogout={handleLogout} />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -263,9 +262,9 @@ export default function DashboardPage() {
           </motion.div>
         </motion.div>
 
-        {/* Activity & Notifications */}
+        {/* Activity Timeline */}
         <motion.div
-          className="grid lg:grid-cols-2 gap-8"
+          className="space-y-4"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -275,13 +274,6 @@ export default function DashboardPage() {
               activities={MOCK_ACTIVITY}
               animate
               delay={0}
-            />
-          </motion.div>
-          <motion.div variants={itemVariants}>
-            <NotificationPanel 
-              notifications={MOCK_NOTIFICATIONS}
-              animate
-              delay={0.1}
             />
           </motion.div>
         </motion.div>
