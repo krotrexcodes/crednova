@@ -36,6 +36,30 @@ export interface TrustScoreData {
   }[];
 }
 
+export interface UserProfile {
+  name: string;
+  income: number;
+  incomeType: string;
+  riskCategory: string;
+  lastUpdated: string;
+}
+
+export interface ActivityEvent {
+  id: string;
+  action: string;
+  timestamp: string;
+  description: string;
+}
+
+export interface Notification {
+  id: string;
+  title: string;
+  message: string;
+  timestamp: string;
+  read: boolean;
+  type: 'success' | 'warning' | 'info';
+}
+
 // Mock score data
 export const MOCK_SCORE_DATA: ScoreData = {
   score: 745,
@@ -44,6 +68,71 @@ export const MOCK_SCORE_DATA: ScoreData = {
   aiConfidence: 92,
   lastUpdated: new Date().toISOString(),
 };
+
+// Mock user profile
+export const MOCK_USER_PROFILE: UserProfile = {
+  name: 'Rajesh Kumar',
+  income: 35000,
+  incomeType: 'Self-employed',
+  riskCategory: 'Low-Medium',
+  lastUpdated: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+};
+
+// Mock activity timeline
+export const MOCK_ACTIVITY: ActivityEvent[] = [
+  {
+    id: '1',
+    action: 'Score Checked',
+    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+    description: 'Your credit score was reviewed by AI engine',
+  },
+  {
+    id: '2',
+    action: 'Simulation Run',
+    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+    description: 'What-if scenario was executed',
+  },
+  {
+    id: '3',
+    action: 'Profile Updated',
+    timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+    description: 'Financial details were updated',
+  },
+  {
+    id: '4',
+    action: 'Loan Applied',
+    timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+    description: 'New loan eligibility check performed',
+  },
+];
+
+// Mock notifications
+export const MOCK_NOTIFICATIONS: Notification[] = [
+  {
+    id: '1',
+    title: 'Score Improved',
+    message: 'Your credit score improved by 15 points this month!',
+    timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
+    read: false,
+    type: 'success',
+  },
+  {
+    id: '2',
+    title: 'New Suggestion',
+    message: 'You are now eligible for premium loans up to ₹50,000',
+    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+    read: false,
+    type: 'info',
+  },
+  {
+    id: '3',
+    title: 'Action Required',
+    message: 'Update your income details to get a more accurate score',
+    timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+    read: true,
+    type: 'warning',
+  },
+];
 
 // Mock score factors
 export const MOCK_SCORE_FACTORS: ScoreFactors = {

@@ -14,9 +14,16 @@ import { TrustScore } from '@/components/features/trust-score';
 import { SmartSuggestions } from '@/components/features/smart-suggestions';
 import { LoanEligibility } from '@/components/features/loan-eligibility';
 import { Gamification } from '@/components/features/gamification';
+import { UserProfileCard } from '@/components/features/user-profile-card';
+import { FinancialForm } from '@/components/features/financial-form';
+import { ActivityTimeline } from '@/components/features/activity-timeline';
+import { NotificationPanel } from '@/components/features/notification-panel';
+import { ExportShare } from '@/components/features/export-share';
+import { ResetRecalculate } from '@/components/features/reset-recalculate';
+import { QuickOverview } from '@/components/features/quick-overview';
 import { containerVariants, itemVariants, slideUp } from '@/lib/animations';
 import { getStoredUser, logout } from '@/lib/mock-data/auth';
-import { MOCK_SCORE_HISTORY, MOCK_SUGGESTIONS } from '@/lib/mock-data/dashboard';
+import { MOCK_SCORE_HISTORY, MOCK_SUGGESTIONS, MOCK_SCORE_DATA, MOCK_USER_PROFILE, MOCK_ACTIVITY, MOCK_NOTIFICATIONS } from '@/lib/mock-data/dashboard';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { LogOut, LayoutDashboard, BarChart3, Zap, Settings } from 'lucide-react';
 
@@ -271,9 +278,9 @@ export default function DashboardPage() {
           </motion.div>
         </motion.div>
 
-        {/* Additional Features Section */}
+        {/* Quick Overview - New Cards */}
         <motion.div
-          className="space-y-8"
+          className="space-y-4"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -282,7 +289,92 @@ export default function DashboardPage() {
             className="text-2xl font-bold text-white"
             variants={itemVariants}
           >
-            Explore More
+            Quick Overview
+          </motion.h2>
+          <motion.div variants={itemVariants}>
+            <QuickOverview 
+              score={MOCK_SCORE_DATA.score}
+              loanEligibility="₹50,000"
+              trustLevel="High"
+              animate
+              delay={0}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* User Profile & Financial Form */}
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={itemVariants}>
+            <UserProfileCard 
+              profile={MOCK_USER_PROFILE}
+              animate
+              delay={0}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <FinancialForm animate delay={0.1} />
+          </motion.div>
+        </motion.div>
+
+        {/* Activity & Notifications */}
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={itemVariants}>
+            <ActivityTimeline 
+              activities={MOCK_ACTIVITY}
+              animate
+              delay={0}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <NotificationPanel 
+              notifications={MOCK_NOTIFICATIONS}
+              animate
+              delay={0.1}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Export & Reset Management */}
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={itemVariants}>
+            <ExportShare 
+              score={MOCK_SCORE_DATA.score}
+              animate
+              delay={0}
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <ResetRecalculate animate delay={0.1} />
+          </motion.div>
+        </motion.div>
+
+        {/* Advanced Features Section */}
+        <motion.div
+          className="space-y-8 pt-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h2
+            className="text-2xl font-bold text-white"
+            variants={itemVariants}
+          >
+            Explore More Features
           </motion.h2>
 
           {/* Features Grid */}
