@@ -1,0 +1,171 @@
+/* Color Palette */
+:root {
+  /* Primary Colors */
+  --bg-primary: #0f0f1e;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #252541;
+  
+  /* Accent Colors */
+  --accent-purple: #a855f7;
+  --accent-purple-light: #c084fc;
+  --accent-blue: #3b82f6;
+  --accent-blue-light: #60a5fa;
+  --accent-cyan: #06b6d4;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --text-tertiary: #718096;
+  
+  /* Glow & Effects */
+  --glow-purple: rgba(168, 85, 247, 0.3);
+  --glow-blue: rgba(59, 130, 246, 0.3);
+  --glow-purple-strong: rgba(168, 85, 247, 0.5);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #a855f7, #3b82f6);
+  --gradient-primary-hover: linear-gradient(135deg, #c084fc, #60a5fa);
+  --gradient-text: linear-gradient(90deg, #a855f7, #3b82f6);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 20px var(--glow-purple);
+  --shadow-glow-blue: 0 0 20px var(--glow-blue);
+  --shadow-glow-strong: 0 0 30px var(--glow-purple-strong);
+  
+  /* Backdrop & Blur */
+  --blur-sm: blur(10px);
+  --blur-md: blur(16px);
+  --blur-lg: blur(24px);
+  
+  /* Border & Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 40px;
+  
+  /* Animation Timing */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --easing-ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Styles */
+html {
+  background-color: var(--bg-primary);
+}
+
+body {
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  font-family: inherit;
+  overflow-x: hidden;
+}
+
+/* Glassmorphic Container Base */
+.glass {
+  background: rgba(26, 26, 46, 0.4);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+.glass-sm {
+  background: rgba(26, 26, 46, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.glass-lg {
+  background: rgba(26, 26, 46, 0.5);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+}
+
+/* Glow Effects */
+.glow-purple {
+  box-shadow: var(--shadow-glow);
+}
+
+.glow-purple-strong {
+  box-shadow: var(--shadow-glow-strong);
+}
+
+.glow-blue {
+  box-shadow: var(--shadow-glow-blue);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth Transitions */
+* {
+  transition: background-color var(--duration-fast) var(--easing-ease-in-out),
+              color var(--duration-fast) var(--easing-ease-in-out),
+              border-color var(--duration-fast) var(--easing-ease-in-out),
+              box-shadow var(--duration-fast) var(--easing-ease-in-out);
+}
+
+button, a {
+  transition: all var(--duration-fast) var(--easing-ease-in-out);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple-light);
+}
+
+/* Remove default focus outline for better visual */
+:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode - default and explicit */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
